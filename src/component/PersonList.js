@@ -18,7 +18,7 @@ class PersonList extends Component {
                 console.error("Some Error is occured while fetching the Data:", error);
             });
     };
-    
+
     handleDetailsClick = (person) => {
         alert(`Details of $${person.name.first} ${person.name.last}:\n
         Email: ${person.email}\n
@@ -29,11 +29,12 @@ class PersonList extends Component {
     render() {
         return (
             <div>
-                <h2 style={{ backgroundColor: 'Blue', textAlign: 'center' }}>User List</h2>
+                <h2 style={{ backgroundColor: 'skyBlue', textAlign: 'center' }}>User List</h2>
                 {this.state.persons.map((person, index) => (
-                    <div key={index} style={{ backgroundColor: 'skyblue' }}>
+                    <div key={index} style={{ backgroundColor: 'lightblue'}}>
                         <img src={person.picture.large} alt={`${person.name.first} ${person.name.last}`} />
-                        <h3>{person.name.title} {person.name.first} {person.name.last} - {person.login.uuid}</h3>
+                        <div>
+                        <h3>{person.name.title} {person.name.first} {person.name.last} {person.login.uuid}</h3>
                         <p>User Name: {person.login.username}</p>
                         <p>Gender: {person.gender}</p>
                         <p>Time Zone: {person.location.timezone.description}</p>
@@ -44,6 +45,7 @@ class PersonList extends Component {
                         <p>Phone: {person.phone}</p>
                         <p>Cell: {person.cell}</p>
                         <button onClick={() => this.handleDetailsClick(person)}>Details</button>
+                        </div>
                         <hr />
                     </div>
                 ))}
@@ -53,3 +55,4 @@ class PersonList extends Component {
 }
 
 export default PersonList;
+
